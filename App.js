@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity, Text, View } from 'react-native';
 import React from 'react';
 import CalendarScreen from './src/screens/CalendarScreen.js';
 import HomeScreen from './src/screens/HomeScreen.js';
@@ -26,7 +26,23 @@ const App = () => {
             ),
           })}
         >
-          <Tab.Screen name="Home" component={HomeScreen} options={{ headerTitle: 'Home', headerTitleStyle: globalStyles.title }} />
+          <Tab.Screen 
+            name="Home" 
+            component={HomeScreen} 
+            options={{ 
+              headerTitle: () => (
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+                    <Text style={globalStyles.headerTitle}>About us</Text>
+                  </TouchableOpacity>
+                  <Text style={globalStyles.separator}>|</Text>
+                  <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+                    <Text style={globalStyles.headerTitle}>Contact us</Text>
+                  </TouchableOpacity>
+                </View>
+              ),
+            }} 
+          />
           <Tab.Screen name="Calendar" component={CalendarScreen} options={{ headerTitle: 'Calendar', headerTitleStyle: globalStyles.title }} />
           <Tab.Screen name="Notification" component={NotificationScreen} options={{ headerTitle: 'Notification', headerTitleStyle: globalStyles.title }} />
           <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitle: 'Menu', headerTitleStyle: globalStyles.title }} />

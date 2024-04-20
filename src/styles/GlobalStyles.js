@@ -41,4 +41,14 @@ export const globalStyles = StyleSheet.create({
     height: 50,
     marginLeft: 10, 
   },
+  headerTitle: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  separator: {
+    color: '#fff',
+    marginHorizontal: 10,
+  },  
 });
