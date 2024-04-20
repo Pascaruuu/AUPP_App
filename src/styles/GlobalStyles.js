@@ -51,5 +51,11 @@ export const globalStyles = StyleSheet.create({
   separator: {
     color: '#fff',
     marginHorizontal: 10,
+  }, 
+  tabBar: {
+    backgroundColor: '#003070',
+    tabBarActiveTintColor: '#007bff',
+    tabBarInactiveTintColor: 'white',
+    height: 100,
   },  
 });

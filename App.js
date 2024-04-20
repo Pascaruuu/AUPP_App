@@ -14,17 +14,16 @@ const App = () => {
   return (
       <NavigationContainer>
         <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarActiveTintColor: '#007bff',
-            tabBarInactiveTintColor: '#003070',
+          screenOptions={{
             headerStyle: globalStyles.header,
+            tabBarStyle: globalStyles.tabBar,
             headerLeft: () => (
               <Image
                 source={require('./src/assets/images/AUPP_Logo.png')} // Replace with the path to your logo
                 style={globalStyles.logo}
               />
             ),
-          })}
+          }}
         >
           <Tab.Screen 
             name="Home" 
