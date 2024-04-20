@@ -4,7 +4,7 @@ export const globalStyles = StyleSheet.create({
   menuContainer: {
     flex: 1,
     padding: 20,
-    backgroundColor: 'darkblue',
+    backgroundColor: '#003070',
     position: 'absolute',
     right: 0,
     width: '80%',
@@ -31,5 +31,8 @@ export const globalStyles = StyleSheet.create({
   },
   menuText: {
     color: 'white',
+  },
+  header: {
+    backgroundColor: '#003070',
   },
 });

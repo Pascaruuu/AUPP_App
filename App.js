@@ -15,7 +15,8 @@ const App = () => {
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarActiveTintColor: '#007bff',
-            tabBarInactiveTintColor: 'gray',
+            tabBarInactiveTintColor: '#003070',
+            headerStyle: globalStyles.header,
           })}
         >
           <Tab.Screen name="Home" component={HomeScreen} options={{ headerTitle: 'Home', headerTitleStyle: globalStyles.title }} />
