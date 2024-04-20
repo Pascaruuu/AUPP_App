@@ -34,5 +34,11 @@ export const globalStyles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#003070',
+    height: 110,
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    marginLeft: 10, 
   },
 });

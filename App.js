@@ -21,7 +21,7 @@ const App = () => {
             headerLeft: () => (
               <Image
                 source={require('./src/assets/images/AUPP_Logo.png')} // Replace with the path to your logo
-                style={{ width: 40, height: 40 }} // Adjust the size as needed
+                style={globalStyles.logo}
               />
             ),
           })}
