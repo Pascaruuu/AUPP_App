@@ -1,12 +1,11 @@
-import React from 'react';
-import { Image, Platform } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './src/screens/HomeScreen.js';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { globalStyles } from './GlobalStyles.js';
 import CalendarScreen from './src/screens/CalendarScreen.js';
-import NotificationScreen from './src/screens/NotificationScreen.js';
+import HomeScreen from './src/screens/HomeScreen.js';
 import MenuScreen from './src/screens/MenuScreen.js';
-
+import NotificationScreen from './src/screens/NotificationScreen.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,14 +18,13 @@ const App = () => {
             tabBarInactiveTintColor: 'gray',
           })}
         >
-          <Tab.Screen name="Home" component={HomeScreen} options={{ headerTitle: 'Home'}} />
-          <Tab.Screen name="Calendar" component={CalendarScreen} options={{ headerTitle: 'Calendar' }} />
-          <Tab.Screen name="Notification" component={NotificationScreen} options={{ headerTitle: 'Notification' }} />
-          <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitle: 'Menu' }} />
+          <Tab.Screen name="Home" component={HomeScreen} options={{ headerTitle: 'Home', headerTitleStyle: globalStyles.title }} />
+          <Tab.Screen name="Calendar" component={CalendarScreen} options={{ headerTitle: 'Calendar', headerTitleStyle: globalStyles.title }} />
+          <Tab.Screen name="Notification" component={NotificationScreen} options={{ headerTitle: 'Notification', headerTitleStyle: globalStyles.title }} />
+          <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitle: 'Menu', headerTitleStyle: globalStyles.title }} />
         </Tab.Navigator>
       </NavigationContainer>
   );
 };
 
 export default App;
-
