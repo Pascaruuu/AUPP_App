@@ -1,12 +1,14 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { Image, TouchableOpacity, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import CalendarScreen from './src/screens/CalendarScreen.js';
 import HomeScreen from './src/screens/HomeScreen.js';
 import MenuScreen from './src/screens/MenuScreen.js';
 import NotificationScreen from './src/screens/NotificationScreen.js';
 import { globalStyles } from './src/styles/GlobalStyles.js';
+import { handleSearch } from './src/components/handleSearch.js';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +26,7 @@ const App = () => {
               />
             ),
             headerRight: () => (
-              <TouchableOpacity onPress={() => alert('You clicked on the search icon!')}>
+              <TouchableOpacity onPress={handleSearch}>
                 <Image
                   source={require('./src/assets/images/search-icon.png')} 
                   style={globalStyles.icon}
