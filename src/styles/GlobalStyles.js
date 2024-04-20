@@ -61,6 +61,25 @@ export const globalStyles = StyleSheet.create({
   icon: {
     marginRight: 40,
   },
+  upcomingEventsTitle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#003070', 
+  },
+  containerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  eventContainer: {
+    width: 185,
+    margin: 10,
+    backgroundColor: 'transparent',
+    borderColor: '#003070',
+    borderWidth: 1,
+    height: 300,
+  },
+  
 
 
 //### Subheader ###

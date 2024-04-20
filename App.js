@@ -69,9 +69,60 @@ const App = () => {
             ),
           }} 
         />
-        <Tab.Screen name="Calendar" component={CalendarScreen} options={{ headerTitle: 'Calendar', headerTitleStyle: globalStyles.title }} />
-        <Tab.Screen name="Notification" component={NotificationScreen} options={{ headerTitle: 'Notification', headerTitleStyle: globalStyles.title }} />
-        <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitle: 'Menu', headerTitleStyle: globalStyles.title }} />
+        <Tab.Screen 
+          name="Calendar" 
+          component={CalendarScreen} 
+          options={{ 
+              headerTitle: () => (
+                <View>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+                      <Text style={globalStyles.headerTitle}>About us</Text>
+                    </TouchableOpacity>
+                    <Text style={globalStyles.separator}>|</Text>
+                    <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+                      <Text style={globalStyles.headerTitle}>Contact us</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              ),
+            }}  />
+        <Tab.Screen 
+          name="Notification" 
+          component={NotificationScreen} 
+          options={{ 
+                headerTitle: () => (
+                  <View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                      <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+                        <Text style={globalStyles.headerTitle}>About us</Text>
+                      </TouchableOpacity>
+                      <Text style={globalStyles.separator}>|</Text>
+                      <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+                        <Text style={globalStyles.headerTitle}>Contact us</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ),
+              }} />
+        <Tab.Screen 
+          name="Menu" 
+          component={MenuScreen} 
+          options={{ 
+                headerTitle: () => (
+                  <View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                      <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+                        <Text style={globalStyles.headerTitle}>About us</Text>
+                      </TouchableOpacity>
+                      <Text style={globalStyles.separator}>|</Text>
+                      <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+                        <Text style={globalStyles.headerTitle}>Contact us</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ),
+              }} />
       </Tab.Navigator>
     </NavigationContainer>
   );
