@@ -57,5 +57,10 @@ export const globalStyles = StyleSheet.create({
     tabBarActiveTintColor: '#007bff',
     tabBarInactiveTintColor: 'white',
     height: 100,
-  },  
+  },
+  icon: {
+    width: 15,
+    height: 15,
+    marginRight: 40,
+  },
 });

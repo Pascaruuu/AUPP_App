@@ -19,9 +19,17 @@ const App = () => {
             tabBarStyle: globalStyles.tabBar,
             headerLeft: () => (
               <Image
-                source={require('./src/assets/images/AUPP_Logo.png')} // Replace with the path to your logo
+                source={require('./src/assets/images/AUPP_Logo.png')}
                 style={globalStyles.logo}
               />
+            ),
+            headerRight: () => (
+              <TouchableOpacity onPress={() => alert('You clicked on the search icon!')}>
+                <Image
+                  source={require('./src/assets/images/search-icon.png')} 
+                  style={globalStyles.icon}
+                />
+              </TouchableOpacity>
             ),
           }}
         >
