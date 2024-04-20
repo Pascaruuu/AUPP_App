@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { Image } from 'react-native';
 import React from 'react';
 import CalendarScreen from './src/screens/CalendarScreen.js';
 import HomeScreen from './src/screens/HomeScreen.js';
@@ -17,6 +18,12 @@ const App = () => {
             tabBarActiveTintColor: '#007bff',
             tabBarInactiveTintColor: '#003070',
             headerStyle: globalStyles.header,
+            headerLeft: () => (
+              <Image
+                source={require('./src/assets/images/AUPP_Logo.png')} // Replace with the path to your logo
+                style={{ width: 40, height: 40 }} // Adjust the size as needed
+              />
+            ),
           })}
         >
           <Tab.Screen name="Home" component={HomeScreen} options={{ headerTitle: 'Home', headerTitleStyle: globalStyles.title }} />
