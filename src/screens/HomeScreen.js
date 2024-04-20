@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Image, ImageBackground, ScrollView, Text, View } from 'react-native';
+import SubHeader from '../components/SubHeader'; // Import the SubHeader component
 import { globalStyles } from '../styles/GlobalStyles.js';
 
 const HomeScreen = ({ navigation }) => {
@@ -10,6 +10,9 @@ const HomeScreen = ({ navigation }) => {
     //   style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center' }}
     >
     <ScrollView>
+      <View>
+      <SubHeader navigation={navigation}>This is the Home Screen</SubHeader>
+      </View>
       <View style={globalStyles.container}> 
         <View style={{ backgroundColor: 'white', padding: 15, margin: 50, borderRadius: 20 }}> 
           <Image

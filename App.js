@@ -8,38 +8,54 @@ import MenuScreen from './src/screens/MenuScreen.js';
 import NotificationScreen from './src/screens/NotificationScreen.js';
 import { globalStyles } from './src/styles/GlobalStyles.js';
 import { handleSearch } from './src/components/handleSearch.js';
-
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={{
-            headerStyle: globalStyles.header,
-            tabBarStyle: globalStyles.tabBar,
-            headerLeft: () => (
-              <Image
-                source={require('./src/assets/images/AUPP_Logo.png')}
-                style={globalStyles.logo}
-              />
-            ),
-            headerRight: () => (
-              <TouchableOpacity onPress={handleSearch}>
-                <Image
-                  source={require('./src/assets/images/search-icon.png')} 
-                  style={globalStyles.icon}
-                />
-              </TouchableOpacity>
-            ),
-          }}
-        >
-          <Tab.Screen 
-            name="Home" 
-            component={HomeScreen} 
-            options={{ 
-              headerTitle: () => (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          headerStyle: globalStyles.header,
+          tabBarStyle: globalStyles.tabBar,
+          headerLeft: () => (
+            <Image
+              source={require('./src/assets/images/AUPP_Logo.png')}
+              style={globalStyles.logo}
+            />
+          ),
+
+          headerRight: () => (
+            <TouchableOpacity onPress={handleSearch} style={globalStyles.icon}>
+              <Ionicons name="search-outline" size={20} color="white" />
+            </TouchableOpacity>
+          ),
+          
+          
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'home' : 'home-outline';
+            } else if (route.name === 'Calendar') {
+              iconName = focused ? 'calendar' : 'calendar-outline';
+            } else if (route.name === 'Notification') {
+              iconName = focused ? 'notifications' : 'notifications-outline';
+            } else if (route.name === 'Menu') {
+              iconName = focused ? 'menu' : 'menu-outline';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+      >
+        <Tab.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ 
+            headerTitle: () => (
+              <View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
                     <Text style={globalStyles.headerTitle}>About us</Text>
@@ -49,14 +65,15 @@ const App = () => {
                     <Text style={globalStyles.headerTitle}>Contact us</Text>
                   </TouchableOpacity>
                 </View>
-              ),
-            }} 
-          />
-          <Tab.Screen name="Calendar" component={CalendarScreen} options={{ headerTitle: 'Calendar', headerTitleStyle: globalStyles.title }} />
-          <Tab.Screen name="Notification" component={NotificationScreen} options={{ headerTitle: 'Notification', headerTitleStyle: globalStyles.title }} />
-          <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitle: 'Menu', headerTitleStyle: globalStyles.title }} />
-        </Tab.Navigator>
-      </NavigationContainer>
+              </View>
+            ),
+          }} 
+        />
+        <Tab.Screen name="Calendar" component={CalendarScreen} options={{ headerTitle: 'Calendar', headerTitleStyle: globalStyles.title }} />
+        <Tab.Screen name="Notification" component={NotificationScreen} options={{ headerTitle: 'Notification', headerTitleStyle: globalStyles.title }} />
+        <Tab.Screen name="Menu" component={MenuScreen} options={{ headerTitle: 'Menu', headerTitleStyle: globalStyles.title }} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 

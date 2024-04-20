@@ -59,8 +59,30 @@ export const globalStyles = StyleSheet.create({
     height: 100,
   },
   icon: {
-    width: 15,
-    height: 15,
     marginRight: 40,
   },
+
+
+//### Subheader ###
+
+  subHeader: {
+    backgroundColor: 'white',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  subHeaderText: {
+    color: '#003070',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  
 });
