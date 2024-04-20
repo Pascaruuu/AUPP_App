@@ -17,7 +17,7 @@ const HomeScreen = ({ navigation }) => {
             // style={{ width: '100%', height: 300, resizeMode: 'contain' }} 
           />
           <Text style={globalStyles.description}>
-            text
+            search box
           </Text>
         </View>
       </View>
