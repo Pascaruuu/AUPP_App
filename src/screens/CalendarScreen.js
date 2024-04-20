@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles.js';
 
 const CalendarScreen = () => {
