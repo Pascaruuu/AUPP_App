@@ -87,6 +87,11 @@ export const globalStyles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
   },
+  auppClubBG: {
+    backgroundColor: '#AD0000', 
+    height: 500, 
+    marginTop: 40,
+  },
   
 
 

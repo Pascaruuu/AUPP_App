@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
           <View style={globalStyles.eventContainer} />
         </View>
         </ScrollView>
-        <View style={{ backgroundColor: '#AD0000', height: 500, marginTop: 40 }}>
+        <View style={globalStyles.auppClubBG}>
           <Text style={globalStyles.aupClubTitle}>AUPP Clubs</Text>
         </View>
       </View>
