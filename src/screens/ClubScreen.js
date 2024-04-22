@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { Image, ScrollView, Text, View } from 'react-native';
-import firebase from '../../firebase';
+import React from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { globalStyles } from '../styles/GlobalStyles.js';
 
 const ClubScreen = () => {
-  const [clubs, setClubs] = useState([]);
-
-  useEffect(() => {
-    const fetchClubs = async () => {
-      const db = firebase.firestore();
-      const snapshot = await db.collection('clubs').get();
-      const clubsData = snapshot.docs.map(doc => doc.data());
-      setClubs(clubsData);
-    };
-
-    fetchClubs();
-  }, []);
-
   return (
-    <ScrollView contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-      {clubs.map((club, index) => (
-        <View key={index} style={{ width: '50%', padding: 10 }}>
-          <Image source={{ uri: club.logo }} style={{ width: '100%', height: 100 }} />
-          <Text>{club.name}</Text>
+    <View style={globalStyles.menuContainer}>
+
+      <View style={globalStyles.profileContainer}>
+        <Image source={{ uri: 'your_profile_picture_url' }} style={globalStyles.profileImage} />
+        <View style={globalStyles.profileTextContainer}>
+          <Text style={globalStyles.profileText}>Name</Text>
+          <Text style={globalStyles.profileText}>email@gmail.com</Text>
         </View>
-      ))}
-    </ScrollView>
+      </View>
+
+      <TouchableOpacity style={globalStyles.menuOption}>
+        <Text style={globalStyles.menuText}>Settings</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={globalStyles.menuOption}>
+        <Text style={globalStyles.menuText}>Help</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={globalStyles.menuOption}>
+        <Text style={globalStyles.menuText}>Change User</Text>
+      </TouchableOpacity>
+
+    </View>
   );
 };
 

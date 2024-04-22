@@ -5,7 +5,7 @@ import { globalStyles } from '../styles/GlobalStyles.js';
 const MenuScreen = () => {
   return (
     <View style={globalStyles.menuContainer}>
-      {/* User Profile */}
+
       <View style={globalStyles.profileContainer}>
         <Image source={{ uri: 'your_profile_picture_url' }} style={globalStyles.profileImage} />
         <View style={globalStyles.profileTextContainer}>
@@ -14,7 +14,6 @@ const MenuScreen = () => {
         </View>
       </View>
 
-      {/* Menu Options */}
       <TouchableOpacity style={globalStyles.menuOption}>
         <Text style={globalStyles.menuText}>Settings</Text>
       </TouchableOpacity>
@@ -24,7 +23,7 @@ const MenuScreen = () => {
       <TouchableOpacity style={globalStyles.menuOption}>
         <Text style={globalStyles.menuText}>Change User</Text>
       </TouchableOpacity>
-      {/* Add more menu options as needed */}
+
     </View>
   );
 };

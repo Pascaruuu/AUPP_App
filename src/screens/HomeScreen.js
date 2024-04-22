@@ -1,21 +1,18 @@
-// HomeScreen.js
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import SubHeader from '../components/SubHeader'; // Import the SubHeader component
+import SubHeader from '../components/SubHeader';
 import { globalStyles } from '../styles/GlobalStyles.js';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View>
-        <SubHeader />
+        <SubHeader navigation={navigation}></SubHeader>
       </View>
       <View style={globalStyles.container}> 
-        <View style={{ margin: 35 }}> 
           <Text style={globalStyles.upcomingEventsTitle}>
             Upcoming Events
           </Text>
-        </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={globalStyles.containerRow}>
           <View style={globalStyles.eventContainer} />
@@ -24,6 +21,9 @@ const HomeScreen = () => {
           <View style={globalStyles.eventContainer} />
         </View>
         </ScrollView>
+        <View style={globalStyles.auppClubBG}>
+          <Text style={globalStyles.aupClubTitle}>AUPP Clubs</Text>
+        </View>
       </View>
     </ScrollView>
   );
