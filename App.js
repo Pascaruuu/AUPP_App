@@ -15,8 +15,6 @@ import { Ionicons } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 const RootStack = createStackNavigator();
 
-
-
 const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
