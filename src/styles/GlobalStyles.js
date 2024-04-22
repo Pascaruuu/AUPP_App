@@ -62,6 +62,7 @@ export const globalStyles = StyleSheet.create({
     marginRight: 40,
   },
   upcomingEventsTitle: {
+    margin: 35,
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -78,6 +79,13 @@ export const globalStyles = StyleSheet.create({
     borderColor: '#003070',
     borderWidth: 1,
     height: 300,
+  },
+  aupClubTitle: {
+    margin: 35,
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
   },
   
 

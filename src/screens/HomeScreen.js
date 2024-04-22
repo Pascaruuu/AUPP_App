@@ -1,8 +1,7 @@
 import React from 'react';
 import { Image, ImageBackground, ScrollView, Text, View } from 'react-native';
-import SubHeader from '../components/SubHeader'; // Import the SubHeader component
+import SubHeader from '../components/SubHeader';
 import { globalStyles } from '../styles/GlobalStyles.js';
-
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -11,11 +10,9 @@ const HomeScreen = ({ navigation }) => {
         <SubHeader navigation={navigation}></SubHeader>
       </View>
       <View style={globalStyles.container}> 
-        <View style={{ margin: 35 }}> 
           <Text style={globalStyles.upcomingEventsTitle}>
             Upcoming Events
           </Text>
-        </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={globalStyles.containerRow}>
           <View style={globalStyles.eventContainer} />
@@ -24,6 +21,9 @@ const HomeScreen = ({ navigation }) => {
           <View style={globalStyles.eventContainer} />
         </View>
         </ScrollView>
+        <View style={{ backgroundColor: '#AD0000', height: 500, marginTop: 40 }}>
+          <Text style={globalStyles.aupClubTitle}>AUPP Clubs</Text>
+        </View>
       </View>
     </ScrollView>
   );
