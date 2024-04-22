@@ -8,15 +8,18 @@ import MenuScreen from './src/screens/MenuScreen.js';
 import NotificationScreen from './src/screens/NotificationScreen.js';
 import { globalStyles } from './src/styles/GlobalStyles.js';
 import { handleSearch } from './src/components/handleSearch.js';
+import { createStackNavigator } from '@react-navigation/stack';
+import ClubScreen from './src/screens/ClubScreen.js';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
+const RootStack = createStackNavigator();
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
+
+
+const TabNavigator = () => (
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
           headerStyle: globalStyles.header,
           tabBarStyle: globalStyles.tabBar,
           headerLeft: () => (
@@ -50,6 +53,8 @@ const App = () => {
           },
         })}
       >
+        
+        
         <Tab.Screen 
           name="Home" 
           component={HomeScreen} 
@@ -124,6 +129,15 @@ const App = () => {
                 ),
               }} />
       </Tab.Navigator>
+);
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <RootStack.Navigator>
+        <RootStack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
+        <RootStack.Screen name="Clubs" component={ClubScreen} />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

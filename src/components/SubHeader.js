@@ -1,8 +1,12 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { globalStyles } from '../styles/GlobalStyles.js';
+import ClubScreen from '../screens/ClubScreen.js';
 
-const SubHeader = ({ navigation }) => {
+const SubHeader = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={[globalStyles.subHeader, { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 65 }]}>
       <TouchableOpacity onPress={() => navigation.navigate('Announcements')}>

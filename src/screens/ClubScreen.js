@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles.js';
 
-const MenuScreen = () => {
+const ClubScreen = () => {
   return (
     <View style={globalStyles.menuContainer}>
 
@@ -28,4 +28,4 @@ const MenuScreen = () => {
   );
 };
 
-export default MenuScreen;
+export default ClubScreen;
