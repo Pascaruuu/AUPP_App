@@ -1,31 +1,34 @@
-import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { globalStyles } from '../styles/GlobalStyles.js';
+import { collection, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
+import { db } from '../../firebaseConfig';
+import ClubItem from '../components/ClubItem';
 
-const ClubScreen = () => {
+const ClubDataScreen = () => {
+  const [clubs, setClubs] = useState([]);
+
+  const fetchClubs = async () => {
+    const clubsSnapshot = await getDocs(collection(db, 'clubs'));
+    const clubsData = clubsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setClubs(clubsData);
+  };
+
+  useEffect(() => {
+    fetchClubs(); // Fetch clubs when the component mounts
+
+    const intervalId = setInterval(fetchClubs, 30000); // Fetch clubs every 30 seconds
+
+    return () => clearInterval(intervalId); // Clean up the interval on unmount
+  }, []);
+
   return (
-    <View style={globalStyles.menuContainer}>
-
-      <View style={globalStyles.profileContainer}>
-        <Image source={{ uri: 'your_profile_picture_url' }} style={globalStyles.profileImage} />
-        <View style={globalStyles.profileTextContainer}>
-          <Text style={globalStyles.profileText}>Name</Text>
-          <Text style={globalStyles.profileText}>email@gmail.com</Text>
-        </View>
-      </View>
-
-      <TouchableOpacity style={globalStyles.menuOption}>
-        <Text style={globalStyles.menuText}>Settings</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={globalStyles.menuOption}>
-        <Text style={globalStyles.menuText}>Help</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={globalStyles.menuOption}>
-        <Text style={globalStyles.menuText}>Change User</Text>
-      </TouchableOpacity>
-
-    </View>
+    <FlatList
+      data={clubs}
+      renderItem={({ item }) => <ClubItem club={item} />}
+      keyExtractor={item => item.id}
+      numColumns={2}
+    />
   );
 };
 
-export default ClubScreen;
+export default ClubDataScreen;
