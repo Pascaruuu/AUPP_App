@@ -16,7 +16,7 @@ const ClubDataScreen = () => {
   useEffect(() => {
     fetchClubs(); // Fetch clubs when the component mounts
 
-    const intervalId = setInterval(fetchClubs, 30000); // Fetch clubs every 30 seconds
+    const intervalId = setInterval(fetchClubs, 500); // Fetch clubs every 30 seconds
 
     return () => clearInterval(intervalId); // Clean up the interval on unmount
   }, []);

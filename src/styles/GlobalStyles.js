@@ -116,5 +116,9 @@ export const globalStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  
+  open:{
+    color:"green",
+  },
+  closed:{
+    color:"red"}
 });
