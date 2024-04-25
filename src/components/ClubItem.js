@@ -1,14 +1,14 @@
+// ClubItem.js
+
 import React from 'react';
-import { Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Button, Image, Text, View } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 
 const ClubItem = ({ club }) => (
-  <View style={styles.clubContainer}>
+  <View style={globalStyles.clubContainer}>
     <Image
-      style={styles.clubLogo}
-      source={{ uri: 'https://via.placeholder.com/150' }} // Placeholder image
-      // Uncomment the line below and replace the placeholder image with the club logo when ready
-      // source={{ uri: club.club_logo }}
+      style={globalStyles.clubLogo}
+      source={require('../assets/images/AUPP_Logo.png')}
     />
     <Text style={globalStyles.clubName}>{club.club_name}</Text>
     <Text style={globalStyles.clubDescription}>{club.club_desc}</Text>
@@ -20,20 +20,5 @@ const ClubItem = ({ club }) => (
     </View>
   </View>
 );
-
-const styles = StyleSheet.create({
-  clubContainer: {
-    flex: 1,
-    margin: 10,
-    paddingVertical: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  clubLogo: {
-    width: 150,
-    height: 150,
-  },
-});
 
 export default ClubItem;

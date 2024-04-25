@@ -1,8 +1,9 @@
 import { collection, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { db } from '../../firebaseConfig';
 import ClubItem from '../components/ClubItem';
+import { globalStyles } from '../styles/GlobalStyles.js';
 
 const ClubDataScreen = () => {
   const [clubs, setClubs] = useState([]);
@@ -22,12 +23,17 @@ const ClubDataScreen = () => {
   }, []);
 
   return (
-    <FlatList
-      data={clubs}
-      renderItem={({ item }) => <ClubItem club={item} />}
-      keyExtractor={item => item.id}
-      numColumns={2}
-    />
+    <View style={globalStyles.container}>
+      <View style={globalStyles.header}>
+      <Text style={globalStyles.SubHTitle}>Clubs</Text>
+      </View>
+      <FlatList 
+        data={clubs}
+        renderItem={({ item }) => <ClubItem club={item} />}
+        keyExtractor={item => item.id}
+        numColumns={2}
+      />
+    </View>
   );
 };
 

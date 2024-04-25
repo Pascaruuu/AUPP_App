@@ -89,8 +89,15 @@ export const globalStyles = StyleSheet.create({
   },
   auppClubBG: {
     backgroundColor: '#AD0000', 
-    height: 500, 
+    height: 750, 
     marginTop: 40,
+  },
+  SubHTitle: {
+    fontSize: 30,
+    paddingTop: 55,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
   },
   
 
@@ -120,5 +127,26 @@ export const globalStyles = StyleSheet.create({
     color:"green",
   },
   closed:{
-    color:"red"}
+    color:"red"
+  },
+
+
+  //#### ClubItems ####
+
+  clubContainer: {
+    flex: 1,
+    margin: 10,
+    paddingVertical: 8,
+    backgroundColor: 'transparent', 
+    borderColor: '#003070', 
+    borderWidth: 1, 
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  clubLogo: {
+    width: 170,
+    height: 170,
+  },
+
 });

@@ -11,6 +11,9 @@ import HomeScreen from './src/screens/HomeScreen.js';
 import MenuScreen from './src/screens/MenuScreen.js';
 import NotificationScreen from './src/screens/NotificationScreen.js';
 import { globalStyles } from './src/styles/GlobalStyles.js';
+import EventScreen from './src/screens/EventScreen.js';
+// import AnnouncementScreen from './src/screens/AnnouncementScreen.js';
+
 
 const Tab = createBottomTabNavigator();
 const RootStack = createStackNavigator();
@@ -134,7 +137,9 @@ const App = () => {
     <NavigationContainer>
       <RootStack.Navigator>
         <RootStack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
-        <RootStack.Screen name="Clubs" component={ClubScreen} />
+        {/* <RootStack.Screen name="Announcements" component={AnnouncementScreen} options={{ headerShown: false }}/> */}
+        <RootStack.Screen name="Events" component={EventScreen} options={{ headerShown: false }}/>
+        <RootStack.Screen name="Clubs" component={ClubScreen} options={{ headerShown: false }}/>
       </RootStack.Navigator>
     </NavigationContainer>
   );
