@@ -13,6 +13,7 @@ import SettingScreen from './src/screens/SettingScreen.js';
 import EventScreen from './src/screens/EventScreen.js';
 import AnnouncementScreen from './src/screens/AnnouncementScreen.js';
 import ClubScreen from './src/screens/ClubScreen.js';
+import AboutUsScreen from './src/screens/AboutUsScreen.js';
 
 
 const Tab = createBottomTabNavigator();
@@ -61,7 +62,6 @@ const TabNavigator = () => {
   })}
 >
     
-    
     <Tab.Screen 
       name="Home" 
       component={HomeScreen} 
@@ -69,7 +69,7 @@ const TabNavigator = () => {
         headerTitle: () => (
           <View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+              <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
                 <Text style={globalStyles.headerTitle}>About us</Text>
               </TouchableOpacity>
               <Text style={globalStyles.separator}>|</Text>
@@ -135,12 +135,13 @@ const TabNavigator = () => {
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator initialRouteName="Menu">
       <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
       <Drawer.Screen name="Settings" component={SettingScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Announcements" component={AnnouncementScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Events" component={EventScreen} options={{ headerShown: false }} /> 
       <Drawer.Screen name="Clubs" component={ClubScreen} options={{ headerShown: false }} />
+      <Drawer.Screen name="AboutUs" component={AboutUsScreen} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 };

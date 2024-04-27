@@ -4,8 +4,6 @@ import { FlatList, Text, View, TouchableOpacity } from 'react-native';
 import { db } from '../../firebaseConfig';
 import ClubItem from '../components/ClubItem';
 import { globalStyles } from '../styles/GlobalStyles.js';
-import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 
 const ClubDataScreen = () => {
   const [clubs, setClubs] = useState([]);
