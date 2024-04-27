@@ -1,5 +1,4 @@
 // HomeScreen.js
-
 import React, { useEffect, useState } from 'react';
 import { ScrollView, FlatList, Text, View } from 'react-native';
 import { collection, getDocs } from 'firebase/firestore';
@@ -23,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={globalStyles.container}>
-      <SubHeader navigation={navigation}></SubHeader>
+      <SubHeader navigation={navigation}/>
       <Text style={globalStyles.upcomingEventsTitle}>
         Upcoming Events
       </Text>

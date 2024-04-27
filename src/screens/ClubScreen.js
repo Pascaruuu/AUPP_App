@@ -1,9 +1,11 @@
 import { collection, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View, TouchableOpacity } from 'react-native';
 import { db } from '../../firebaseConfig';
 import ClubItem from '../components/ClubItem';
 import { globalStyles } from '../styles/GlobalStyles.js';
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const ClubDataScreen = () => {
   const [clubs, setClubs] = useState([]);
@@ -23,7 +25,7 @@ const ClubDataScreen = () => {
   }, []);
 
   return (
-    <View style={globalStyles.container}>
+    <View>
       <View style={globalStyles.header}>
       <Text style={globalStyles.SubHTitle}>Clubs</Text>
       </View>
