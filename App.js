@@ -135,7 +135,7 @@ const TabNavigator = () => {
 const CustomDrawerContent = (props) => {
   return (
     <DrawerContentScrollView {...props}>
-      <ImageBackground source={require('./src/assets/images/pfpbg.png')} style={{width: '100%', height: 150}}>
+      <ImageBackground source={require('./src/assets/images/pfpbg.png')} style={{width: '100%', height: 150, marginTop: -48, marginBottom: 20,}}>
         <Image source={require('./src/assets/images/AUPP_Logo.png')} style={{width: 60, height: 60, borderRadius: 30, marginTop: 45, marginLeft: 25,}} />
       </ImageBackground>
       <DrawerItemList {...props} />
