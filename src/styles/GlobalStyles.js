@@ -293,4 +293,13 @@ export const globalStyles = StyleSheet.create({
     alignSelf: 'center',
   },
 
+  //### Settings ###
+
+  settingRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+  },
+
 });
