@@ -123,12 +123,19 @@ export const globalStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+
+
+  //### firebase ###
   open:{
     color:"green",
   },
   closed:{
     color:"red"
   },
+
+
+  //### Text styles ###
+
   textTitle:{
     fontSize: 22,
     marginTop: 50,
@@ -159,7 +166,59 @@ export const globalStyles = StyleSheet.create({
     marginRight: 20,
     fontSize: 16,
   },
+  textdesc:{
+    marginTop: 20,
+    marginLeft : 20,
+    marginRight: 20,
+    fontSize: 14,
+  },
+  mapicon:{
+    flexDirection: 'row', 
+    alignItems: 'center',
+    marginLeft: 20,
+  },
+  boldText: {
+    fontWeight: 'bold',
+  },
+  inputTitle: {
+    marginTop: 15,
+    marginLeft : 20,
+    marginBottom: 10,
+    color: '#003070',
+    fontWeight: 'bold',
+  },
+  input: {
+    padding: 8,
+    height: 40,
+    marginLeft: 15,
+    marginRight: 15,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+  Msginput: {
+    padding: 8,
+    height: 90,
+    marginLeft: 15,
+    marginRight: 15,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
 
+  
+
+  submitButton: {
+    backgroundColor: '#003070',
+    padding: 10,
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+    width: 100,
+  },
+  submitButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 
   //#### ClubItems ####
 
