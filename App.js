@@ -15,6 +15,7 @@ import AnnouncementScreen from './src/screens/AnnouncementScreen.js';
 import ClubScreen from './src/screens/ClubScreen.js';
 import AboutUsScreen from './src/screens/AboutUsScreen.js';
 import ContactUsScreen from './src/screens/ContactUsScreen.js';
+import ProfileScreen from './src/screens/ProfileScreen.js';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -132,22 +133,28 @@ const TabNavigator = () => {
 );
 };
 
-const CustomDrawerContent = (props) => {
-  const { state, ...rest } = props;
-  const newState = { ...state };
-  newState.routes = newState.routes.filter((item) => item.name !== "Settings");
 
+const CustomDrawerContent = (props) => {
   return (
     <DrawerContentScrollView {...props}>
       <ImageBackground source={require('./src/assets/images/pfpbg.png')} style={{width: '100%', height: 150, marginTop: -48, marginBottom: 20,}}>
         <Image source={require('./src/assets/images/AUPP_Logo.png')} style={{width: 60, height: 60, borderRadius: 30, marginTop: 45, marginLeft: 25,}} />
       </ImageBackground>
-      <DrawerItemList state={newState} {...rest} />
+      <DrawerItem label="Home" onPress={() => props.navigation.navigate('Home')} />
+      <DrawerItem label="Announcements" onPress={() => props.navigation.navigate('Announcements')} />
+      <DrawerItem label="Events" onPress={() => props.navigation.navigate('Events')} />
+      <DrawerItem label="Clubs" onPress={() => props.navigation.navigate('Clubs')} />
+      <DrawerItem label="About Us" onPress={() => props.navigation.navigate('About Us')} />
+      <DrawerItem label="Contact Us" onPress={() => props.navigation.navigate('Contact Us')} />
       <DrawerItem label="" style={{backgroundColor: '#ccc', height: 1}} />
+      <DrawerItem label="Profile" onPress={() => props.navigation.navigate('Profile')} />
       <DrawerItem label="Settings" onPress={() => props.navigation.navigate('Settings')} />
     </DrawerContentScrollView>
   );
-}
+};
+
+
+
 
 const DrawerNavigator = () => {
   return (
@@ -158,10 +165,12 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Clubs" component={ClubScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="About Us" component={AboutUsScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Contact Us" component={ContactUsScreen} options={{ headerShown: false }} />
+      <Drawer.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Settings" component={SettingScreen} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 };
+
 
 const App = () => {
   return (

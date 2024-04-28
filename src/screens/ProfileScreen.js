@@ -2,11 +2,11 @@ import React from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 
-const SettingScreen = () => {
+const ProfileScreen = () => {
   return (
     <ScrollView>
     <View style={globalStyles.header}>
-      <Text style={globalStyles.SubHTitle}>Settings</Text>
+      <Text style={globalStyles.SubHTitle}>Profile</Text>
     </View>
     </ScrollView>
   );
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingScreen;
+export default ProfileScreen;
