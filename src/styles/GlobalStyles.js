@@ -151,7 +151,7 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderColor: '#003070',
     borderWidth: 1,
-    height: 600,
+    height: 550,
     alignSelf: 'center',
   },
   eventdesc:{

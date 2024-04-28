@@ -80,7 +80,7 @@ const EventItem = ({ event }) => {
       </View>
       {posterUrl && (
         <Image
-          style={{...globalStyles.eventLogo, width: '90%', height: '55%', alignSelf: 'center'}} // Set a fixed width and height
+          style={{...globalStyles.eventLogo, width: '90%', height: '49%', alignSelf: 'center'}} // Set a fixed width and height
           source={{uri: posterUrl}} // Use poster_url from Firebase Storage
         />
       )}
