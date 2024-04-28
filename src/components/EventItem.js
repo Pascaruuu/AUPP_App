@@ -1,8 +1,8 @@
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import React, { useEffect, useState } from 'react';
-import { Button, Image, Text, View } from 'react-native';
-import PushNotification from 'react-native-push-notification';
+import { Button, Image, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
+import * as Notifications from 'expo-notifications';
 
 const EventItem = ({ event }) => {
   if (!event) {
@@ -25,7 +25,7 @@ const EventItem = ({ event }) => {
   // Format the date of the event
   const eventDate = startTime.toLocaleDateString();
 
-  const handleInterest = () => {
+  const handleInterest = async () => {
     setInterested(!interested);
 
     // If the user is interested in the event, schedule a notification
@@ -33,15 +33,17 @@ const EventItem = ({ event }) => {
       const reminderTime = new Date(startTime.getTime() - 15 * 60 * 1000); // 15 minutes before the event
 
       if (reminderTime > new Date()) { // Only schedule the notification if the reminder time is in the future
-        PushNotification.localNotificationSchedule({
-          message: `The event ${event.event_name} is starting soon!`,
-          date: reminderTime,
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: `The event ${event.event_name} is starting soon!`,
+          },
+          trigger: reminderTime,
         });
       }
     }
   };
 
-  const handleGoing = () => {
+  const handleGoing = async () => {
     setGoing(!going);
 
     // If the user is going to the event, schedule a notification
@@ -49,9 +51,11 @@ const EventItem = ({ event }) => {
       const reminderTime = new Date(startTime.getTime() - 60 * 60 * 1000); // 1 hour before the event
 
       if (reminderTime > new Date()) { // Only schedule the notification if the reminder time is in the future
-        PushNotification.localNotificationSchedule({
-          message: `The event ${event.event_name} is starting in 1 hour!`,
-          date: reminderTime,
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: `The event ${event.event_name} is starting in 1 hour!`,
+          },
+          trigger: reminderTime,
         });
       }
     }
@@ -70,32 +74,52 @@ const EventItem = ({ event }) => {
   }, [event]);
 
   return (
-    <View style={globalStyles.container}>
-      <View style={globalStyles.header}>
-        <Text style={globalStyles.SubHTitle}>{event.event_name}</Text>
+    <View style={globalStyles.eventBox}>
+      <View>
+        <Text style={globalStyles.eventTitle}>{event.event_name}</Text>
       </View>
       {posterUrl && (
         <Image
-          style={{...globalStyles.eventLogo, width: 360, height: 360, alignSelf: 'center'}} // Set a fixed width and height
+          style={{...globalStyles.eventLogo, width: '90%', height: '55%', alignSelf: 'center'}} // Set a fixed width and height
           source={{uri: posterUrl}} // Use poster_url from Firebase Storage
         />
       )}
-      <View style={{margin: 10, padding: 10, backgroundColor: '#f0f0f0', borderRadius: 10}}>
-        <Text style={globalStyles.eventDescription}>{event.event_desc}</Text>
-        <Text style={globalStyles.eventTime}>{eventDate}, {formattedStartTime} - {formattedEndTime}</Text>
-        <Text style={globalStyles.eventVenue}>{venue}</Text>
+      <View style={globalStyles.eventdesc}>
+        <Text style={globalStyles.eventDescription}>
+          <Text style={{fontWeight: 'bold'}}>Description: </Text>
+          {event.event_desc}
+        </Text>
+        <Text style={globalStyles.eventTime}>
+          <Text style={{fontWeight: 'bold'}}>Date (D/M/Y): </Text>
+          {eventDate}
+        </Text>
+        <Text style={globalStyles.eventTime}>
+          <Text style={{fontWeight: 'bold'}}>Time: </Text>
+          {formattedStartTime} - {formattedEndTime}
+        </Text>
+        <Text style={globalStyles.eventVenue}>
+          <Text style={{fontWeight: 'bold'}}>Location: </Text>
+          {venue}
+        </Text>
       </View>
+
       <View style={globalStyles.buttonContainer}>
-        <Button 
-          title={interested ? "Interested" : "Not Interested"} 
+        <TouchableOpacity 
+          style={interested ? globalStyles.Button : { ...globalStyles.Button, backgroundColor: '#AD0000' }}
           onPress={handleInterest}
-          color={interested ? "green" : "red"}
-        />
-        <Button 
-          title={going ? "Going" : "Not Going"} 
+        >
+          <Text style={globalStyles.ButtonText}>
+            {interested ? "Interested" : "Not Interested"}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={going ? globalStyles.Button : { ...globalStyles.Button, backgroundColor: '#AD0000' }}
           onPress={handleGoing}
-          color={going ? "green" : "red"}
-        />
+        >
+          <Text style={globalStyles.ButtonText}>
+            {going ? "Going" : "Not Going"}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

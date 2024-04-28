@@ -133,6 +133,44 @@ export const globalStyles = StyleSheet.create({
     color:"red"
   },
 
+  //### Event styles ###
+  
+  eventTitle:{
+    fontSize: 22,
+    marginTop: 20,
+    marginBottom: 20,
+    color: '#AD0000',
+    fontWeight: 'bold',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  eventBox: {
+    width: '90%',
+    margin: 10,
+    backgroundColor: 'transparent',
+    borderColor: '#003070',
+    borderWidth: 1,
+    height: 600,
+    alignSelf: 'center',
+  },
+  eventdesc:{
+    margin: 10,
+    marginLeft: 20,
+    backgroundColor: '#f0f0f0', 
+    borderRadius: 10
+  },
+  Button: {
+    backgroundColor: '#003070',
+    padding: 10,
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 10,
+    width: 150,
+  },
+  ButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 
   //### Text styles ###
 
