@@ -129,6 +129,36 @@ export const globalStyles = StyleSheet.create({
   closed:{
     color:"red"
   },
+  textTitle:{
+    fontSize: 22,
+    marginTop: 50,
+    marginLeft: 20,
+    color: '#AD0000',
+    fontWeight: 'bold',
+  },
+  profilepic:{
+    width: 100, 
+    height: 100, 
+    margin: 20,
+    borderRadius: 50,
+  },
+  devname: {
+    marginTop: 30,
+    marginLeft : 0,
+    color: '#003070',
+    fontWeight: 'bold',
+  },
+  devdescription: {
+    marginTop: 5,
+    marginLeft : 0,
+  },
+  description: {
+    marginTop: 20,
+    marginLeft : 20,
+    marginBottom: 50,
+    marginRight: 20,
+    fontSize: 16,
+  },
 
 
   //#### ClubItems ####

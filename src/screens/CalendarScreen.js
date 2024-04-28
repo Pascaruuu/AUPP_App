@@ -8,14 +8,11 @@ const CalendarScreen = () => {
     <ScrollView>
       <View style={globalStyles.container}>
 
-        {/* Calendar */}
         <View>
           <Calendar onDayPress={day => { console.log('selected day', day); }} />
         </View>
 
-        {/* Event Banner */}
         <View>
-          <Image source={{ uri: 'your_image_url' }} style={{ width: '100%', height: 200 }} />
           <Text style={globalStyles.description}>Event Banner</Text>
         </View>
 
