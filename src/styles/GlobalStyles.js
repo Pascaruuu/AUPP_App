@@ -71,6 +71,7 @@ export const globalStyles = StyleSheet.create({
   containerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   eventContainer: {
     width: 185,
@@ -145,7 +146,7 @@ export const globalStyles = StyleSheet.create({
     alignSelf: 'center',
   },
   eventBox: {
-    width: '90%',
+    width: 300,
     margin: 10,
     backgroundColor: 'transparent',
     borderColor: '#003070',
