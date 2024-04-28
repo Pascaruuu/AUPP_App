@@ -1,26 +1,28 @@
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { db } from '../../firebaseConfig';
-import ClubItem from '../components/ClubItem'; // You might want to replace this with an EventItem component
-import { globalStyles } from '../styles/GlobalStyles.js';
+import EventItem from '../components/EventItem';
+import { globalStyles } from '../styles/GlobalStyles';
 
 const EventScreen = () => {
   const [events, setEvents] = useState([]);
-
-  const fetchEvents = async () => {
-    const eventsSnapshot = await getDocs(collection(db, 'events')); // Adjust this to fetch your events data
-    const eventsData = eventsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    setEvents(eventsData);
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchEvents(); // Fetch events when the component mounts
+    const eventsQuery = query(collection(db, 'events'));
+    const unsubscribe = onSnapshot(eventsQuery, (snapshot) => {
+      const eventsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setEvents(eventsData);
+      setLoading(false);
+    });
 
-    const intervalId = setInterval(fetchEvents, 500); // Fetch events every 30 seconds
-
-    return () => clearInterval(intervalId); // Clean up the interval on unmount
+    return () => unsubscribe();
   }, []);
+
+  if (loading) {
+    return <View style={globalStyles.container}><Text>Loading...</Text></View>;
+  }
 
   return (
     <View style={globalStyles.container}>
@@ -29,9 +31,9 @@ const EventScreen = () => {
       </View>
       <FlatList 
         data={events}
-        renderItem={({ item }) => <ClubItem club={item} />} // You might want to replace this with an EventItem component
+        renderItem={({ item }) => <EventItem event={item} />}
         keyExtractor={item => item.id}
-        numColumns={2}
+
       />
     </View>
   );
