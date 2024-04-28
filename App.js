@@ -1,20 +1,20 @@
-import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, Text, TouchableOpacity, View, ImageBackground} from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { handleSearch } from './src/components/handleSearch.js';
 import CalendarScreen from './src/screens/CalendarScreen.js';
 import HomeScreen from './src/screens/HomeScreen.js';
 import NotificationScreen from './src/screens/NotificationScreen.js';
 import { globalStyles } from './src/styles/GlobalStyles.js';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import SettingScreen from './src/screens/SettingScreen.js';
 import EventScreen from './src/screens/EventScreen.js';
 import AnnouncementScreen from './src/screens/AnnouncementScreen.js';
 import ClubScreen from './src/screens/ClubScreen.js';
 import AboutUsScreen from './src/screens/AboutUsScreen.js';
-
+import ContactUsScreen from './src/screens/ContactUsScreen.js';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -73,7 +73,7 @@ const TabNavigator = () => {
                 <Text style={globalStyles.headerTitle}>About us</Text>
               </TouchableOpacity>
               <Text style={globalStyles.separator}>|</Text>
-              <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
                 <Text style={globalStyles.headerTitle}>Contact us</Text>
               </TouchableOpacity>
             </View>
@@ -92,7 +92,7 @@ const TabNavigator = () => {
                   <Text style={globalStyles.headerTitle}>About us</Text>
                 </TouchableOpacity>
                 <Text style={globalStyles.separator}>|</Text>
-                <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+                <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
                   <Text style={globalStyles.headerTitle}>Contact us</Text>
                 </TouchableOpacity>
               </View>
@@ -110,7 +110,7 @@ const TabNavigator = () => {
                     <Text style={globalStyles.headerTitle}>About us</Text>
                   </TouchableOpacity>
                   <Text style={globalStyles.separator}>|</Text>
-                  <TouchableOpacity onPress={() => alert('You clicked on Contact us!')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
                     <Text style={globalStyles.headerTitle}>Contact us</Text>
                   </TouchableOpacity>
                 </View>
@@ -153,6 +153,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Events" component={EventScreen} options={{ headerShown: false }} /> 
       <Drawer.Screen name="Clubs" component={ClubScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="AboutUs" component={AboutUsScreen} options={{ headerShown: false }} />
+      <Drawer.Screen name="ContactUs" component={ContactUsScreen} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 };
