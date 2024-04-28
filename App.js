@@ -2,13 +2,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View, ImageBackground} from 'react-native';
 import { handleSearch } from './src/components/handleSearch.js';
 import CalendarScreen from './src/screens/CalendarScreen.js';
 import HomeScreen from './src/screens/HomeScreen.js';
 import NotificationScreen from './src/screens/NotificationScreen.js';
 import { globalStyles } from './src/styles/GlobalStyles.js';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import SettingScreen from './src/screens/SettingScreen.js';
 import EventScreen from './src/screens/EventScreen.js';
 import AnnouncementScreen from './src/screens/AnnouncementScreen.js';
@@ -88,7 +88,7 @@ const TabNavigator = () => {
           headerTitle: () => (
             <View>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+              <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
                   <Text style={globalStyles.headerTitle}>About us</Text>
                 </TouchableOpacity>
                 <Text style={globalStyles.separator}>|</Text>
@@ -106,7 +106,7 @@ const TabNavigator = () => {
             headerTitle: () => (
               <View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => alert('You clicked on About us!')}>
+                <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
                     <Text style={globalStyles.headerTitle}>About us</Text>
                   </TouchableOpacity>
                   <Text style={globalStyles.separator}>|</Text>
@@ -132,10 +132,21 @@ const TabNavigator = () => {
 );
 };
 
+const CustomDrawerContent = (props) => {
+  return (
+    <DrawerContentScrollView {...props}>
+      <ImageBackground source={require('./src/assets/images/pfpbg.png')} style={{width: '100%', height: 150}}>
+        <Image source={require('./src/assets/images/AUPP_Logo.png')} style={{width: 60, height: 60, borderRadius: 30, marginTop: 45, marginLeft: 25,}} />
+      </ImageBackground>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+  );
+}
+
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="Menu">
+    <Drawer.Navigator initialRouteName="Menu" drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
       <Drawer.Screen name="Settings" component={SettingScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Announcements" component={AnnouncementScreen} options={{ headerShown: false }} />
