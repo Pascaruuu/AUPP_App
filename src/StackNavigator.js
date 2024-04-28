@@ -12,7 +12,7 @@ function AppNavigator() {
       <Stack.Screen name="Announcements" component={Announcements} />
       <Stack.Screen name="Events" component={Events} />
       <Stack.Screen name="ClubScreen" component={ClubScreen} />
-      {/* Adding the ClubScreen here */}
+
     </Stack.Navigator>
   );
 }
