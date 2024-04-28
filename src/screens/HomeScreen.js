@@ -17,7 +17,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    fetchClubs(); // Fetch clubs when the component mounts
+    fetchClubs();
   }, []);
 
   return (
