@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View, ImageBackground} from 'react-nativ
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { handleSearch } from './src/components/handleSearch.js';
 import CalendarScreen from './src/screens/CalendarScreen.js';
 import HomeScreen from './src/screens/HomeScreen.js';
@@ -69,11 +69,11 @@ const TabNavigator = () => {
         headerTitle: () => (
           <View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
+              <TouchableOpacity onPress={() => navigation.navigate('About Us')}>
                 <Text style={globalStyles.headerTitle}>About us</Text>
               </TouchableOpacity>
               <Text style={globalStyles.separator}>|</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Contact Us')}>
                 <Text style={globalStyles.headerTitle}>Contact us</Text>
               </TouchableOpacity>
             </View>
@@ -88,11 +88,11 @@ const TabNavigator = () => {
           headerTitle: () => (
             <View>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
+              <TouchableOpacity onPress={() => navigation.navigate('About Us')}>
                   <Text style={globalStyles.headerTitle}>About us</Text>
                 </TouchableOpacity>
                 <Text style={globalStyles.separator}>|</Text>
-                <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Contact Us')}>
                   <Text style={globalStyles.headerTitle}>Contact us</Text>
                 </TouchableOpacity>
               </View>
@@ -106,11 +106,11 @@ const TabNavigator = () => {
             headerTitle: () => (
               <View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
+                <TouchableOpacity onPress={() => navigation.navigate('About Us')}>
                     <Text style={globalStyles.headerTitle}>About us</Text>
                   </TouchableOpacity>
                   <Text style={globalStyles.separator}>|</Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('Contact Us')}>
                     <Text style={globalStyles.headerTitle}>Contact us</Text>
                   </TouchableOpacity>
                 </View>
@@ -133,27 +133,32 @@ const TabNavigator = () => {
 };
 
 const CustomDrawerContent = (props) => {
+  const { state, ...rest } = props;
+  const newState = { ...state };
+  newState.routes = newState.routes.filter((item) => item.name !== "Settings");
+
   return (
     <DrawerContentScrollView {...props}>
       <ImageBackground source={require('./src/assets/images/pfpbg.png')} style={{width: '100%', height: 150, marginTop: -48, marginBottom: 20,}}>
         <Image source={require('./src/assets/images/AUPP_Logo.png')} style={{width: 60, height: 60, borderRadius: 30, marginTop: 45, marginLeft: 25,}} />
       </ImageBackground>
-      <DrawerItemList {...props} />
+      <DrawerItemList state={newState} {...rest} />
+      <DrawerItem label="" style={{backgroundColor: '#ccc', height: 1}} />
+      <DrawerItem label="Settings" onPress={() => props.navigation.navigate('Settings')} />
     </DrawerContentScrollView>
   );
 }
-
 
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator initialRouteName="Menu" drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
-      <Drawer.Screen name="Settings" component={SettingScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Announcements" component={AnnouncementScreen} options={{ headerShown: false }} />
       <Drawer.Screen name="Events" component={EventScreen} options={{ headerShown: false }} /> 
       <Drawer.Screen name="Clubs" component={ClubScreen} options={{ headerShown: false }} />
-      <Drawer.Screen name="AboutUs" component={AboutUsScreen} options={{ headerShown: false }} />
-      <Drawer.Screen name="ContactUs" component={ContactUsScreen} options={{ headerShown: false }} />
+      <Drawer.Screen name="About Us" component={AboutUsScreen} options={{ headerShown: false }} />
+      <Drawer.Screen name="Contact Us" component={ContactUsScreen} options={{ headerShown: false }} />
+      <Drawer.Screen name="Settings" component={SettingScreen} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 };
