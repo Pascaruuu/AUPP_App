@@ -3,7 +3,7 @@ import { ScrollView, FlatList, Text, View } from 'react-native';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import ClubItem from '../components/ClubItem';
-import EventItem from '../components/EventItem'; // Adjust path as needed
+import EventItem from '../components/EventItem';
 import SubHeader from '../components/SubHeader';
 import { globalStyles } from '../styles/GlobalStyles.js';
 

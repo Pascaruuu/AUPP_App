@@ -172,6 +172,15 @@ export const globalStyles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  ButtonDisabled: {
+    backgroundColor: 'gray',
+    padding: 10,
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 10,
+    width: 150,
+  },
+
 
   //### Text styles ###
 
@@ -275,6 +284,13 @@ export const globalStyles = StyleSheet.create({
   clubLogo: {
     width: 170,
     height: 170,
+  },
+  clubName: {
+    fontSize: 15,
+    color: '#AD0000',
+    fontWeight: 'bold',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
 
 });
